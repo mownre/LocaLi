@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google Maps</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/src/lib/angular.js"></script>
+    <script src="/src/lib/ng-map.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="src/index.js"></script>
+
+
+</head>
+<body ng-app="mapa" ng-controller="mapController as vm" ng-init="vm.carregarMarkers()">
+    <center><h1>Adicione um marcador</h1></center>
+    <div class="container">
+        <ng-map id="meuMapa" center="{{vm.centro}}" on-click="vm.salvarMarker(event)">    
+            <marker ng-repeat="marker in vm.markers" position="[{{marker.lat}}, {{marker.lng}}]"></marker>
+        </ng-map>
+    </div>
+</body>
+</html>
